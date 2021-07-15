@@ -31,11 +31,9 @@ test_shell_error()
 # verify that each file has a correct license header
 test_license_header()
 {
-  # Non Normation SAS or GPL3 files
-  excluded_paths="! -regex .*repoGpgKeyManagement.* -and ! -regex .*ipsPackageRepositories.* -and ! -regex .*clockConfiguration.* "
-  find . \( $excluded_paths \) -and \( -name '*.cf' -o -name '*.st' \) -print0 |
+  find . -name '*.cf' -o -name '*.st' -print0 |
     while IFS= read -r -d '' file; do
-      if ! grep -qE "# SPDX-FileCopyrightText.*Normation SAS" $file; then
+      if ! grep -qE "# SPDX-FileCopyrightText.*" $file; then
         # Ignore very small files
         if [ `wc -l $file | awk '{print $1}'` -gt "10" ]; then
           echo "$file is missing a correct license header"
