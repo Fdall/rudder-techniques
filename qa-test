@@ -32,7 +32,7 @@ test_shell_error()
 test_license_header()
 {
   # Non Normation SAS or GPL3 files
-  excluded_paths="! -regex .*repoGpgKeyManagement.* -and ! -regex .*ipsPackageRepositories.* -and ! -regex .*clockConfiguration.* -and ! -regex .*compress-ldap-backups.cf "
+  excluded_paths="! -regex .*repoGpgKeyManagement.* -and ! -regex .*ipsPackageRepositories.* -and ! -regex .*clockConfiguration.* "
   find . \( $excluded_paths \) -and \( -name '*.cf' -o -name '*.st' \) -print0 |
     while IFS= read -r -d '' file; do
       if ! grep -qE "# SPDX-FileCopyrightText.*Normation SAS" $file; then
