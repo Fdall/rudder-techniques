@@ -56,6 +56,9 @@ bundle agent system_rudder_apache_networks_configuration {
       # Restart apache at the end of the technique if needed
       "rudder_server_system_reload_apache" expression => "${allowed_network_prefix}_repaired|${remote_run_prefix}_repaired",
                                                 scope => "namespace";
+      # Restart apache at the end of the technique if needed
+      "rudder_server_system_reload_cf_serverd" expression => "${allowed_network_prefix}_repaired|${remote_run_prefix}_repaired",
+                                                scope => "namespace";
 
   methods:
       # Allowed networks
